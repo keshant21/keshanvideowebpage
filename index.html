@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keshan YouTube Channel</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-900 to-blue-500">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center mb-8">
+            <div class="flex items-center">
+                <img src="Keshan Logo" alt="Keshan Logo" class="mr-2">
+                <h1 class="text-2xl font-bold text-yellow-400">Keshan</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-white">videos</span>
+                <button onclick="handleSubscribe()" class="bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600 transition-colors">
+                    subscribe
+                </button>
+            </div>
+        </nav>
+
+        <!-- Video Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="videoGrid"></div>
+    </div>
+
+    <script>
+        const videos = [
+            {
+                id: 1,
+                title: "cap cut pc sinhala front type (100% ) [CC]",
+                views: "16 views",
+                timeAgo: "6 days ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/oYJ1GqQ8xfQ"
+            },
+            {
+                id: 2,
+                title: "ai song generator 🔷 free 🆓 සිංහල",
+                views: "27 views",
+                timeAgo: "7 months ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/PgScksINYzk?si=aZut-qpkkHbPh7vk"
+            },
+            {
+                id: 3,
+                title: "INFINIX Zero 30 Review | best camera, gaming performance Best value for money",
+                views: "1.9K views",
+                timeAgo: "10 months ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/pp21ZhaqjLQ?si=4wwVeIQga9F6SbwO"
+            },
+            {
+                id: 4,
+                title: "ZTE nubia Red Magic 9 Pro+ review",
+                views: "340 views",
+                timeAgo: "10 months ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/lpp49BwMbJY?si=uMWSbqcsXYW30Pvn"
+            },
+            {
+                id: 5,
+                title: "Galaxy S24 ultra REVIEW #samsung #trending #smartphone",
+                views: "112 views",
+                timeAgo: "11 months ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/GJTKT4TjhSY?si=qdtSA8l9K1a31O9K"
+            },
+            {
+                id: 6,
+                title: "Google Pixel 8 pro Review #trending #google #smartphone",
+                views: "133 views",
+                timeAgo: "11 months ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/mXSksBvwyA8?si=DepY8aeB5yr_hZTr"
+            },
+            {
+                id: 7,
+                title: "galaxy S24 ultra VS iphone 15 pro max #trending",
+                views: "289 views",
+                timeAgo: "11 months ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/TImXbX9mIUM?si=j5Y1MsqBXLUBBz5N"
+            },
+            {
+                id: 8,
+                title: "HOW TO MAKE A QR #trending",
+                views: "27 views",
+                timeAgo: "11 months ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/4ZtuJVCI6D8?si=SQ1iLiyyGuwTmFjH"
+            },
+            {
+                id: 9,
+                title: "How to type sinhala font in cap cut",
+                views: "3.4K views",
+                timeAgo: "1 year ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/cpXsBeCzUBw?si=BYF1OnrlC4obcqa_"
+            },
+            {
+                id: 10,
+                title: "How to type sinhala font in pixellab #pixellab",
+                views: "314 views",
+                timeAgo: "1 year ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/uPKkG9GI2Wg?si=QEMQHoPMVoVdC8wy"
+            },
+            {
+                id: 11,
+                title: "Cap cut How to type Sinhala front | MR KT Video | SRILANKAN",
+                views: "10K views",
+                timeAgo: "2 years ago",
+                thumbnail: "/api/placeholder/320/180",
+                url: "https://youtu.be/mSuXT95k0hU?si=Bc6dTq2BbwEhOdMC"
+            }
+        ];
+
+        function handleVideoClick(url) {
+            window.open(url, '_blank');
+        }
+
+        function handleSubscribe() {
+            window.open('https://www.youtube.com/@ceszn11', '_blank');
+        }
+
+        // Render videos
+        const videoGrid = document.getElementById('videoGrid');
+        videos.forEach(video => {
+            const videoCard = document.createElement('div');
+            videoCard.className = 'bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer transform hover:scale-105 transition-transform';
+            videoCard.onclick = () => handleVideoClick(video.url);
+            
+            videoCard.innerHTML = `
+                <img src="${video.thumbnail}" alt="${video.title}" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold text-sm mb-2 line-clamp-2">${video.title}</h3>
+                    <div class="text-gray-600 text-sm">
+                        <span>${video.views}</span>
+                        <span class="mx-2">•</span>
+                        <span>${video.timeAgo}</span>
+                    </div>
+                </div>
+            `;
+            
+            videoGrid.appendChild(videoCard);
+        });
+    </script>
+</body>
+</html>
